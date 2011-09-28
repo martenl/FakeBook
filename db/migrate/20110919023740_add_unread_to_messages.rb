@@ -1,6 +1,6 @@
 class AddUnreadToMessages < ActiveRecord::Migration
   def self.up
-    add_column :messages, :unread, :boolean, :default => 1
+    add_column :messages, :unread, :boolean, :default => true
   end
 
   def self.down
