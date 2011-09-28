@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  body: MyText
+  sender_id: 
+  receiver_id: 
+
+two:
+  title: MyString
+  body: MyText
+  sender_id: 
+  receiver_id: 

@@ -1,0 +1,4 @@
+
+<% user.received_friendshiprequests.each do |request|%>
+<a href="javascript:acceptFriendRequest(<%=request.receiver.id%>,<%=request.from_id%>)"><%=request.requester.get_name%>'s Freund werden</a><br />
+<%end%>

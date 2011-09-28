@@ -1,0 +1,14 @@
+<div id="friendspanel">
+		<hr />
+		<%if own_profile%>
+		<a href="javascript:doDialog('friendshiprequests',false)"><%=@user.received_friendshiprequests.length%> Freundschaftsanfragen</a> <br />	
+		<%=@user.sent_friendshiprequests.length%> offene Freundschaftsanfragen <br />
+		<%= link_to(@user.friends.length.to_s + " Freunde",{:controller => :user,:action => :friends,:id => @user.id})%><br/>
+		<%else%>
+		<%if ! (is_friend || was_friendshiprequested)%>
+			<a id="add-friend" href="javascript:sendFriendRequest(<%=@user.id%>,<%=session[:user_id]%>)">Als Freund hinzufügen</a> <br />
+		<% end %>
+		<%= link_to(@user.friends.length.to_s + " Freund(e)",{:controller => :user,:action => :friends,:id => @user.id})%><br/>
+	<%end%>
+	
+</div>

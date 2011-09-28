@@ -1,0 +1,23 @@
+<% if ! logged_in%>
+<div id="login">
+<fieldset style="width: 20%">
+<legend>Login</legend>
+<%= form_tag({:controller => :user,:action => :login},:method => "post") do %>
+<table>
+  <tr>
+  	<td><%= label_tag :email,"Email"%></td>
+  	<td><%= text_field_tag :email%></td>
+  </tr>
+  <tr>
+  	<td><%= label_tag :password,"Password"%></td>
+  	<td><%= password_field_tag  :password%></td>
+  </tr>
+  <tr>
+  	<td/><td><%= submit_tag "Login"%></td>
+  </tr>
+</table>
+<%end%>
+<%= link_to "Registrieren",{:controller => :user,:action => :register}%>
+</fieldset>
+</div>
+<%end%>

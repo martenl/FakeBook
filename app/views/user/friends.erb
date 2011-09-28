@@ -1,0 +1,9 @@
+<h1> Freunde von <%=@user.get_name%></h1>
+<% @friends.each do |friend|%>
+<%= link_to friend.get_name,{:controller => :user,:action => :show,:id => friend.id}%><br />
+<%end%>
+
+<%content_for :navigationpanel do%>
+	<%= render "friendspanel", :own_profile => session[:user_id] == params[:id].to_i,:is_friend => @user.is_friend(session[:user_id]),:was_friendshiprequested => @user.was_friendshiprequested(session[:user_id])%>
+<%end%>
+<% content_for :title do%>Freunde von <%=@user.get_name%><% end%>

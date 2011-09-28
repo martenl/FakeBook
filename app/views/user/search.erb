@@ -1,0 +1,9 @@
+<%=@users.length%> User gefunden <br />
+<%@users.each do |user|%>
+<%= link_to user.get_name,{:controller => :user,:action => :show,:id => user.id} %> <br />
+
+<%end%>
+
+
+
+<% content_for :title do%>Suchergebnisse für <%=params[:name]%> <%end%>

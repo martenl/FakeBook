@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield :title %></title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :all %>
+  <%= csrf_meta_tag %>
+  
+  <script type="text/javascript">
+  <%= yield :javascript %>
+  </script>
+</head>
+<body>
+<div id="menu" class="button" >
+	<%=image_tag "logo.jpg"%>
+	<div id="search" style="padding:0px;"> 
+		<%= render "shared/search"%>		
+		
+	</div>
+</div>
+<div id="navigation-panel">
+	<%= yield :navigationpanel%>
+</div>
+<div id="content">
+<%= yield %>
+</div>
+<div id="mask"></div>
+<%if @user != nil then name = @user.get_name else name = "" end%>
+<%= render "shared/sendMsg", :receiver => name,:dialog => true%>
+</body>
+</html>

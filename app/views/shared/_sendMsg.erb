@@ -1,0 +1,30 @@
+<div id="sendMsg">
+<fieldset style="position:relative,width: 100%;height:90%;padding: 0px">
+<legend>Mitteilung schreiben</legend>
+<%= form_tag({:controller => :message,:action => :write},:method => "post",:remote => true) do %>
+<table>
+  <tr>
+  	<td><%= label_tag :receiver,"Empfänger"%></td>
+  	<td><%= text_field_tag :receiver,receiver%></td>
+  	<div id="receiver_choices"></div>
+  </tr>
+  <tr>
+  	<td><%= label_tag :title,"Titel"%></td>
+  	<td><%= text_field_tag :title%></td>
+  </tr>
+  <tr>
+  	<td><%= label_tag :text,"Text"%></td>
+  	<td><%= text_area_tag  :text%></td>
+  </tr>
+  <tr>
+  	<td/>
+  	<%if dialog %>
+  		<td><%= submit_tag "Mitteilung senden",:class => "workAndClose"%></td><td><button class="close">Abbrechen</button></td>
+  	<%else%>
+  		<td><%= submit_tag "Mitteilung senden",:class => "workAndClose"%></td>
+  	<%end%>
+  </tr>
+</table>
+<%end%>
+</fieldset>
+</div>

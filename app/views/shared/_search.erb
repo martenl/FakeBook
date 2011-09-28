@@ -1,0 +1,18 @@
+<div id="search-button">
+<%= form_tag({:controller => :user,:action => :search},:method => "post") do %>
+
+<%= text_field_tag :name,"" ,:size => 80, :maxlength => 130,:placeholder =>"Suchen..."%>
+</div>
+
+<%end%> 
+
+
+<div id ="profile-button" class="search-button">	
+	<%= link_to("Profil",{:controller => :user,:action => :show,:id => session[:user_id]}) %>
+</div>
+<div id ="message-button" class="search-button">	
+	<%= link_to("Nachrichten",{:controller => :message,:action => :list}) %>
+</div>
+<div id ="logout-button" class="search-button">	
+	<%= link_to("X",{:controller => :user,:action => :logout}) %>
+</div>
