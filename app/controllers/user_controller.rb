@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   
-  before_filter :authenticate, :except => [:new,:create,:login]
+  before_filter :authenticate, :except => [:new,:register,:login]
   
    def search
     @users = User.find_by_sql(["SELECT * FROM users u WHERE u.name || u.familyname LIKE ?",'%'+params[:name]+'%'])

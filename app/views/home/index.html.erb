@@ -1,18 +1,8 @@
 <h1>Willkommen bei FakeBook</h1>
-<a href="javascript:doDialog('dialog',false)" id="show" >Show</a>
-<%=session[:user_id]%> ID <br />
+
 <%= render "shared/login"%><br />
 
 <div id="mask"></div>
 
-<div id="dialog" style="background-color:#222;position:absolute;width:20%;height:20%;left:40%;top:40%;z-index:9999;display:none">
-	<h1>Hello, vamanos muchachos</h1><br/>
-    <a class="close" href="">Close</a>		
-</div>
-
-<% content_for :javascript do%>
-
-
-<%end%>
 
 <%content_for :title do%>Willkommen bei FakeBook<%end%>
