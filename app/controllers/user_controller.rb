@@ -10,6 +10,7 @@ class UserController < ApplicationController
       params[:id] = session[:user_id] 
     end
     @user = User.find(params[:id])
+    @ownProfile = session[:user_id] == @user.id
   end
 
   def create
