@@ -2,6 +2,7 @@ class UserController < ApplicationController
   
   before_filter :authenticate, :except => [:create,:register,:login]
   
+  
    def search
     @users = User.find_by_sql(["SELECT * FROM users u WHERE u.name || u.familyname LIKE ?",'%'+params[:name]+'%'])
   end
