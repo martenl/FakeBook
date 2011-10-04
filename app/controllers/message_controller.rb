@@ -1,4 +1,7 @@
 class MessageController < ApplicationController
+  
+  before_filter :authenticate
+  
   def read
     @user = User.find(session[:user_id])
     @msgs = @user.received_messages.where("messages.id = ?",params[:id])
@@ -20,12 +23,15 @@ class MessageController < ApplicationController
   def writeWork
     @message = Message.new
     @sender = User.find(session[:user_id])
-    name = params[:receiver].split
-    @receivers = User.where("name = ? AND familyname = ?",name[0],name[1])
+    @receivers = User.find_by_sql(["SELECT * FROM users u WHERE u.name ||' '|| u.familyname = ?",params[:receiver]])
     if @receivers.length == 1
       @receiver = @receivers.first
     else
-      redirect_to :action => :write
+      if request.xhr?
+        render :text => "fehler", :content_type => 'text/plain'
+      else
+        redirect_to :action => :write 
+      end
     end
     @message.sender = @sender
     @message.receiver = @receiver
@@ -34,7 +40,11 @@ class MessageController < ApplicationController
     if @message.save
       redirect_to :controller => :user,:action => :show,:id => session[:user_id]
     else
-      redirect_to :action => :write
+      if request.xhr?
+        render :text => "fehler", :content_type => 'text/plain'
+      else
+        redirect_to :action => :write 
+      end
     end
   end
 

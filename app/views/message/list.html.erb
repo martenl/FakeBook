@@ -4,9 +4,10 @@
   Sie haben <%= @messages.length%> Nachrichten	
   <% if @messages.length != 0%>
   	<div id="messages-list">
-  	<%@messages.each do | msg|%>
+  	<%@messages.reverse.each do | msg|%>
   		<div class="message-elem">
-  			<b><%= link_to msg.title,{:controller=>:message,:action=>:read,:id=>msg.id}%></b><br />
+  			<b><%= link_to msg.title,{:controller=>:message,:action=>:read,:id=>msg.id}%></b>      Vom  <%=msg.created_at%>
+  			<br />
   			Von: <%= link_to msg.sender.get_name,{:controller => :user,:action => :show,:id => msg.sender.id}%><br />  	  		
   		</div>
   	<%end%>

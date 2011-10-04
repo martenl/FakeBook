@@ -1,3 +1,6 @@
 <h1><%=@msg.title%></h1>
-<p>Absender: <%=@msg.sender.get_name%></p>
+<p>Absender: <%= link_to @msg.sender.get_name,{:controller => :user,:action => :show,:id => @msg.sender.id}%></p>
+<p>Datum: <%=@msg.created_at.to_date %></p>
 <p><%=@msg.body%></p>
+<p> <button>Antworten</button></p>
+<% content_for :title do%>Nachricht von <%=@msg.sender.get_name%><%end%>

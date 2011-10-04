@@ -41,8 +41,6 @@ Martenlosansky::Application.routes.draw do
   get "user/login" => "user#register"
 
   get "user/logout"
-
-  get "user/edit"
   
   get "user/list"
   
