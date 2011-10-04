@@ -2,5 +2,7 @@
 <p>Absender: <%= link_to @msg.sender.get_name,{:controller => :user,:action => :show,:id => @msg.sender.id}%></p>
 <p>Datum: <%=@msg.created_at.to_date %></p>
 <p><%=@msg.body%></p>
-<p> <button>Antworten</button></p>
+<p> <button onclick="doDialog('sendMsg',true)">Antworten</button></p>
+<%= render "shared/sendMsg", :receiver => @msg.sender.get_name,:dialog => true%>
+
 <% content_for :title do%>Nachricht von <%=@msg.sender.get_name%><%end%>

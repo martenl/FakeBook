@@ -25,7 +25,5 @@
 <%= yield %>
 </div>
 <div id="mask"></div>
-<%if @user != nil then name = @user.get_name else name = "" end%>
-<%= render "shared/sendMsg", :receiver => name,:dialog => true%>
 </body>
 </html>
