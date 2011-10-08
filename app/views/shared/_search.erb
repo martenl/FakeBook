@@ -1,5 +1,5 @@
 <div id="search-button">
-<%= form_tag({:controller => :user,:action => :search},:method => "post") do %>
+<%= form_tag(search_path,:method => "post") do %>
 
 <%= text_field_tag :name,"" ,:size => 80, :maxlength => 130,:placeholder =>"Suchen..."%>
 </div>
@@ -8,11 +8,11 @@
 
 
 <div id ="profile-button" class="search-button">	
-	<%= link_to("Profil",{:controller => :user,:action => :show,:id => session[:user_id]}) %>
+	<%= link_to("Profil",show_user_path(session[:user_id])) %>
 </div>
 <div id ="message-button" class="search-button">	
-	<%= link_to("Nachrichten",{:controller => :message,:action => :list}) %>
+	<%= link_to("Nachrichten",message_list_path) %>
 </div>
 <div id ="logout-button" class="search-button">	
-	<%= link_to("X",{:controller => :user,:action => :logout}) %>
+	<%= link_to("X",logout_path) %>
 </div>

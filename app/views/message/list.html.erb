@@ -8,7 +8,7 @@
   		<div class="message-elem">
   			<b><%= link_to msg.title,{:controller=>:message,:action=>:read,:id=>msg.id}%></b>      Vom  <%=msg.created_at%>
   			<br />
-  			Von: <%= link_to msg.sender.get_name,{:controller => :user,:action => :show,:id => msg.sender.id}%><br />  	  		
+  			Von: <%= link_to msg.sender.get_name,show_user_path(:id => msg.sender.id)%><br />  	  		
   		</div>
   	<%end%>
   	</div>

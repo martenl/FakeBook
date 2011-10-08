@@ -1,30 +1,30 @@
 Martenlosansky::Application.routes.draw do
   
-  post "user/search"
+  post "user/search", :as => 'search'
   
   match "friendshiprequest/show" => "friendshiprequest#show"
   
-  match "user/friends/:id" => "user#friends"
+  match "user/friends/:id" => "user#friends", :as => 'friends'
   
-  post "friendshiprequest/offer"
+  post "friendshiprequest/offer",:as => 'offer_friendship'
   
   get "friendshiprequest/list"
   
   match "friendshiprequest/kill/:id" => "friendshiprequest#kill"
 
-  post "friendshiprequest/accept"
+  post "friendshiprequest/accept", :as => 'accept_friendship'
 
-  match "user/message/read/:id" => "message#read" 
+  match "user/message/read/:id" => "message#read", :as => "read_message"
 
-  get "user/message/write" => "message#write"
+  get "user/message/write" => "message#write", :as => 'write_message'
 
   post "user/message/write" => "message#writeWork"
   
-  match "user/message/list" => "message#list"
+  match "user/message/list" => "message#list", :as => 'message_list'
 
-  get "home/index"
+  get "home/index", :as => 'home'
 
-  match "user/show/:id" => "user#show"
+  match "user/show/:id" => "user#show", :as => 'show_user'
   
   get "user/show"
   
@@ -32,15 +32,15 @@ Martenlosansky::Application.routes.draw do
 
   get "user/create" => "user#register"
   
-  post "user/create"
+  post "user/create", :as => 'create_user'
 
-  get "user/register"
+  get "user/register", :as => 'register_user'
 
-  post "user/login"
+  post "user/login", :as => "login"
   
   get "user/login" => "user#register"
 
-  get "user/logout"
+  get "user/logout", :as => 'logout'
   
   get "user/list"
   
