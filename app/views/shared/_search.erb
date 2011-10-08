@@ -6,13 +6,14 @@
 
 <%end%> 
 
-
-<div id ="profile-button" class="search-button">	
-	<%= link_to("Profil",show_user_path(session[:user_id])) %>
-</div>
-<div id ="message-button" class="search-button">	
-	<%= link_to("Nachrichten",message_list_path) %>
-</div>
-<div id ="logout-button" class="search-button">	
-	<%= link_to("X",logout_path) %>
-</div>
+<% if session[:user_id] != nil%>
+	<div id ="profile-button" class="search-button">	
+		<%= link_to("Profil",show_user_path(session[:user_id])) %>
+	</div>
+	<div id ="message-button" class="search-button">	
+		<%= link_to("Nachrichten",message_list_path) %>
+	</div>
+	<div id ="logout-button" class="search-button">	
+		<%= link_to("X",logout_path) %>
+	</div>
+<% end%>
