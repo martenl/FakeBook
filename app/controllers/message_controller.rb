@@ -2,6 +2,19 @@ class MessageController < ApplicationController
   
   before_filter :authenticate
   
+  def summary
+    if params[:format] = "pdf"
+      @msg = "pdf"
+    else
+      @msg = "html"
+    end
+   respond_to do |format| 
+     format.html 
+     format.pdf { prawnto :prawn=>{:page_layout=>:landscape},:inline => true  }     
+   end 
+   
+  end
+  
   def read
     @user = User.find(session[:user_id])
     @msgs = @user.received_messages.where("messages.id = ?",params[:id])
@@ -52,5 +65,4 @@ class MessageController < ApplicationController
     @user = User.find(session[:user_id])
     @messages = @user.received_messages
   end
-
 end

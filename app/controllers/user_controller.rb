@@ -5,6 +5,7 @@ class UserController < ApplicationController
    def search
     @users = User.find_by_sql(["SELECT * FROM users u WHERE u.name || u.familyname LIKE ?",'%'+params[:name]+'%'])
   end
+  
   def show
     if params[:id] == nil
       params[:id] = session[:user_id] 

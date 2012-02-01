@@ -31,3 +31,8 @@ gem 'sqlite3'
 # end
 
 gem 'jquery-rails', '>=1.0.12'
+
+gem 'prawn'
+
+gem 'devise'
+

@@ -1,5 +1,7 @@
 Martenlosansky::Application.routes.draw do
   
+  devise_for :users
+
   post "user/search", :as => 'search'
   
   match "friendshiprequest/show" => "friendshiprequest#show"
@@ -21,6 +23,8 @@ Martenlosansky::Application.routes.draw do
   post "user/message/write" => "message#writeWork"
   
   match "user/message/list" => "message#list", :as => 'message_list'
+  
+  match "user/message/summary(.:format)" => "message#summary"
 
   get "home/index", :as => 'home'
 
